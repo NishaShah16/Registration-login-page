@@ -1,0 +1,239 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.pay_header {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: linear-gradient(to right, #0f0d65, #663276);
+}
+
+    .pay_header p {
+        color: #fff;
+        margin: 0;
+        position: absolute;
+        width: calc(100% - 220px);
+        left: 190px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+        .pay_header p span {
+            margin-left: -75px;
+        }
+
+.pay_logo img {
+    width: 150px;
+}
+
+.pay_method {
+    padding: 50px 0;
+}
+
+    .pay_method h3 {
+        font-size: 26px;
+        color: #FFF;
+        line-height: 1.3;
+        display: block;
+        padding-bottom: 15px;
+        position: relative;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+        .pay_method h3::after {
+            content: ' ';
+            border-bottom: 2px solid transparent;
+            display: block;
+            width: 20%;
+            position: absolute;
+            bottom: -1px;
+            background: #fec502;
+        }
+
+.gen_info {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    min-height: 145px;
+}
+
+.pay_method h5 {
+    font-size: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.pay_method .btn-primary {
+    background: #fec502;
+    border-color: #fec502;
+    color: #000;
+}
+
+.gen_info p {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.gen_info a {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #fec502;
+}
+
+.pay_opt {
+    margin: 0 0 20px 0;
+    padding: 0;
+    list-style: none;
+}
+
+    .pay_opt li {
+        margin: 10px 0 10px 0;
+        padding: 20px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        position: relative;
+    }
+
+        .pay_opt li .custom-control-label {
+            color: #FFF;
+        }
+
+        .pay_opt li .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+            background-color: #fec502;
+        }
+        .pay_opt li .custom-radio.custom-control p small {
+            color: #fff;
+        }
+        .pay_opt li .custom-control-input:focus ~ .custom-control-label::before {
+            box-shadow: 0 0 0;
+        }
+
+        .pay_opt li .visa_logo {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+.your_order {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.shop_table tr {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid #fff;
+}
+
+    .shop_table tr th {
+        color: #fff;
+        padding: 10px 0;
+    }
+
+    .shop_table tr td {
+        color: #fff;
+        padding: 10px 0;
+    }
+
+        .shop_table tr td.product-total {
+            padding-left: 20px;
+        }
+
+    .shop_table tr.order-total {
+        border-bottom: 0;
+    }
+        .shop_table tr.order-total .product-name span, .shop_table tr.order-total .product-total span {
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+body, html {
+    height: 100%;
+}
+
+#pay_cont {
+    flex: 1 0 auto;
+}
+
+.pay_footer {
+    flex-shrink: none;
+    background: #FFF;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+    .pay_footer p {
+        margin-bottom: 0;
+    }
+
+.payment_body {
+    background: #716eea;
+}
+
+.ssl_logo {
+    max-width: 250px;
+}
+
+
+
+/* Responsive Start */
+
+@media(max-width:767px) {
+    .your_order {
+        margin-top: 40px;
+    }
+
+    .pay_header p {
+        width: 100%;
+        margin-top: 10px;
+        width: 100%;
+        position: static;
+    }
+
+        .pay_header p span {
+            margin: 0;
+        }
+
+    .pay_logo {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media(max-width:575px) {
+    .pay_footer {
+        text-align: center;
+        display: block;
+    }
+
+        .pay_footer p {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .pay_footer img {
+            display: inline-block;
+            width: 200px;
+        }
+
+    .pay_opt li .visa_logo {
+        width: 120px;
+    }
+}

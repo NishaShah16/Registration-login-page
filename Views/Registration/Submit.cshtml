@@ -1,0 +1,387 @@
+﻿@model NDProject.Models.Registration
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>H.N.B. UTTARAKHAND MEDICAL EDUCATION UNVERSITY</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/assets/img/favicon.ico" rel="icon">
+    <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="~/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="~/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="~/assets/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="#" class="logo d-flex align-items-center">
+                <img src="~/assets/images/logoDark.png" alt="">
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link nav-icon search-bar-toggle " href="#">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown pe-3">
+
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <img src="~/assets/images/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">@ViewBag.User</span>
+                    </a><!-- End Profile Iamge Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="@Url.Action("Login", "Login")">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Sign Out</span>
+                            </a>
+                        </li>
+
+                    </ul><!-- End Profile Dropdown Items -->
+                </li><!-- End Profile Nav -->
+            </ul>
+        </nav><!-- End Icons Navigation -->
+
+    </header><!-- End Header -->
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Dashboard")"><span><i class="bi bi-grid"></i>Dashboard</span></a></li>
+            @*<li class="nav-item stepCompleated"><a class="nav-link" href="#"><span><i class="bi bi-x-lg"></i><i class="bi bi-check-lg"></i>Pay Counselling Fees</span></a></li>*@
+            <li class="nav-item"><a class="nav-link" href="@Url.Action("Submit","Registration")"><span><i class="bi bi-x-lg"></i><i class="bi bi-check-lg"></i>Registration</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/ImagesUpload/"><span><i class="bi bi-x-lg"></i><i class="bi bi-check-lg"></i>Images Upload</span></a></li>
+            @*<li class="nav-item"><a class="nav-link" href="PayParticipationFees.html"><span><i class="bi bi-x-lg"></i><i class="bi bi-check-lg"></i>Pay Participation Fees</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="ChoiceFilling.html"><span><i class="bi bi-x-lg"></i><i class="bi bi-check-lg"></i>Choice Filling</span></a></li>*@
+            <li class="nav-item"><a class="nav-link" href="Result.html"><span><i class="bi bi-x-lg"></i><i class="bi bi-check-lg"></i>Result</span></a></li>
+        </ul>
+
+    </aside><!-- End Sidebar-->
+
+    <main id="main" class="main">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <p class="text-success">@TempData["SuccessMessage"]</p>
+        }
+        @if (TempData["ErrorMessage"] == null)
+        {
+            <p class="text-DANGER">@TempData["ErrorMessage"]</p>
+        }
+
+        <section class="section dashboard mt-4">
+            <div class="card cardBG">
+                <h5 class="card-title">Registration</h5>
+                <div class="card-body">
+
+                    <form action="@Url.Action("Submit", "Registration")" method="post" enctype="multipart/form-data">
+
+                        <div class="row g-3">
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">Do You Have Uttarakhand Domicile?</label>
+                                <select class="form-select" name="Domicile">
+                                    <option selected="">Choose...</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                @Html.ValidationMessageFor(m => m.Domicile, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">Category</label>
+
+                                <select class="form-select" name="Category">
+                                    <option value="">Choose...</option>
+                                    @if (ViewBag.Category != null)
+                                    {
+                                        foreach (var item in (List<NDProject.Models.Category>)ViewBag.Category)
+                                        {
+                                            <option value="@item.Id">
+
+                                                @item.Category_name
+                                            </option>
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+                                        <option disabled>No Subcategory available</option>
+                                    }
+
+                                </select>
+                                
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">Certificate No.</label>
+                                <input type="text" class="form-control" name="CertNo1" placeholder="">
+                                @Html.ValidationMessageFor(m => m.CertNo1, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label  class="form-label mand">Issue Date</label>
+                                <div class="input-group date">
+                                    <input type="date" class="form-control datetimepicker" name="IssueDate1" placeholder="DD/MM/YYYY" data-date-format="dd/mm/yyyy">                                <span class="input-group-append">
+
+                                    </span>
+                                    @Html.ValidationMessageFor(m => m.IssueDate1, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label  class="form-label mand">Sub Category</label>@*database se uthana hai*@
+                            <select class="form-select" name="Subcategory">
+                                <option selected="">Choose...</option>
+                                @if (ViewBag.Subcategory != null)
+                                {
+                                    foreach (var item in (List<NDProject.Models.Subcategory>)ViewBag.Subcategory)
+                                    {
+
+                                        <option value="@item.Id">
+
+                                            @item.Subcategory_name
+                                        </option>
+                                    }
+                                }
+                                else
+                                {
+                                    <option disabled>No Subcategory available</option>
+                                }
+                            </select>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">Certificate No.</label>
+                                <input type="text" class="form-control" name="CertNo2" placeholder="">
+                                @Html.ValidationMessageFor(m => m.CertNo2, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label  class="form-label mand">Issue Date</label>
+                                <div class="input-group date">
+                                    <input type="date" class="form-control datetimepicker" name="IssueDate2" placeholder="DD/MM/YYYY" data-date-format="dd/mm/yyyy">                                <span class="input-group-append">
+
+                                    </span>
+                                    @Html.ValidationMessageFor(m => m.IssueDate2, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">Do You Have Internship Certificate?</label>
+                                <select class="form-select" name="InternCert">
+                                    <option selected="">Choose...</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                @Html.ValidationMessageFor(m => m.InternCert, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label  class="form-label mand">Date of Completion</label>
+                                <div class="input-group date">
+                                    <input type="date" class="form-control datetimepicker" name="CompletionDate" placeholder="DD/MM/YYYY" data-date-format="dd/mm/yyyy">
+                                    <span class="input-group-append">
+
+                                    </span>
+                                    @Html.ValidationMessageFor(m => m.CompletionDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">Completion Certificate Issued By</label>
+                                <input type="text" class="form-control" name="Issuer" placeholder="">
+                                @Html.ValidationMessageFor(m => m.Issuer, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">Name of Council</label>
+                                <input type="text" class="form-control" name="Council" placeholder="">
+                                @Html.ValidationMessageFor(m => m.Council, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">Registration No.</label>
+                                <input type="text" class="form-control" name="RegNo" placeholder="">
+                                @Html.ValidationMessageFor(m => m.RegNo, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">Are You a Bonded Candidate?</label>
+                                <select class="form-select" name="Bonded">
+                                    <option selected="">Choose...</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                @Html.ValidationMessageFor(m => m.Bonded, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">Upload NOC</label>
+                                <input class="form-control" type="file" accept="image/*" name="NOCFilePath" required>
+                                @Html.ValidationMessageFor(m => m.NOCFilePath, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">Are You a Regular UK State PMHS Candidate?</label>
+                                <select class="form-select" name="PMHSCandidate">
+                                    <option selected="">Choose...</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                @Html.ValidationMessageFor(m => m.PMHSCandidate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label  class="form-label mand">Date of Issue of NOC</label>
+                                <div class="input-group date">
+                                    <input type="date" class="form-control datetimepicker" name="NOCIssueDate" placeholder="DD/MM/YYYY" data-date-format="dd/mm/yyyy">
+
+                                    @Html.ValidationMessageFor(m => m.NOCIssueDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">Are you claiming the service benifit of Remote Area?</label>
+                                <select class="form-select" name="RemoteBenefit">
+                                    <option selected="">Choose...</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                @Html.ValidationMessageFor(m => m.RemoteBenefit, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">No. of Year</label>
+                                <select class="form-select" name="Years">
+                                    <option selected="">Choose...</option>
+                                    <option value="Less Then 1 Year">Less Then 1 Year</option>
+                                    <option value="2 Years To 3 Years">2 Years To 3 Years</option>
+                                    <option value="More Then 3 Years">More Then 3 Years</option>
+                                </select>
+                                @Html.ValidationMessageFor(m => m.Years, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">M.B.B.S. Pass Out State</label>
+                                <select class="form-select" name="MBBSState">
+                                    <option selected="">Choose...</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                                @Html.ValidationMessageFor(m => m.MBBSState, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label mand">College Name</label>@*database se uthana hai*@
+                                <select class="form-select" name="College">
+                                    <option selected="">Choose...</option>
+                                    @if (ViewBag.CollegeName != null)
+                                    {
+                                        foreach (var item in (List<NDProject.Models.CollegeName>)ViewBag.CollegeName)
+                                        {
+
+                                            <option value="@item.Id">
+
+                                                @item.College_Name
+                                            </option>
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <option disabled>No CollegeName available</option>
+                                    }
+
+                                </select>
+                               
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label id="QuotaSeats" for="QuotaSeats" class="form-label mand">You Are Eligible Only For All India Quota Seat in Pvt Medical College</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="QuotaSeats" id="" value="QuotaSeats">
+                                    <label class="form-check-label" for="Private Medical College Only"> <strong>Private Medical College Only</strong> </label>
+                                    @Html.ValidationMessageFor(m => m.QuotaSeats, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label id="EligiblePrivateOnly" for="EligiblePrivateOnly" class="form-label mand">You Are Eligible For Both State & All India Quota Seats</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="EligiblePrivateOnly" value="EligiblePrivateOnly">
+                                    <label class="form-check-label" for="Govt College Only"> <strong>Govt College Only</strong> </label>
+                                   
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="EligiblePrivateOnly" value="EligiblePrivateOnly">
+                                    <label class="form-check-label" for="Govt & Private Both"> <strong>Govt & Private Both</strong> </label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="text-center mt-4">
+                            @*<a href="@Url.Action("","")" class="btn1">Submit</a>*@
+                            <button type="submit" class="btn1">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+        </section>
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            <p class="mb-0">Copyright © H.N.B. Uttarakhand Medical Education University, Dehradun</p>
+        </div>
+    </footer><!-- End Footer -->
+
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/assets/js/jquery.min.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="~/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/assets/vendor/quill/quill.min.js"></script>
+    <script src="~/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="~/assets/vendor/chart.js/chart.min.js"></script>
+    <script src="~/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="~/assets/vendor/echarts/echarts.min.js"></script>
+    <script src="~/assets/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/assets/js/main.js"></script>
+</body>
+
+</html>
+
+
+

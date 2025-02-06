@@ -1,0 +1,192 @@
+
+<!-- saved from url=(0038)http://secure.edufee.in/PaymentProcess -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript">
+        var currentControllerName = 'PaymentProcess';
+        var webAppPath = '';
+    </script>
+
+
+
+
+
+
+    <meta name="viewport" content="width=device-width">
+    <title>ND Payment Gateway</title>
+
+    <link rel="stylesheet" href="./ND Payment Gateway_files/all.min.css">
+    <link rel="stylesheet" href="./ND Payment Gateway_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./ND Payment Gateway_files/custom.css">
+    <link rel="stylesheet" href="./ND Payment Gateway_files/extra.css">
+    <link rel="stylesheet" href="./ND Payment Gateway_files/jquery-confirm.min.css">
+
+
+    <script src="./ND Payment Gateway_files/jquery-3.3.1.min.js.download" type="text/javascript"></script>
+    <script src="./ND Payment Gateway_files/bootstrap.min.js.download" type="text/javascript"></script>
+    <script src="./ND Payment Gateway_files/paymentprocess.js.download" type="text/javascript"></script>
+    <script src="./ND Payment Gateway_files/jquery-confirm.min.js.download"></script>
+</head>
+<body class="d-flex flex-column payment_body" data-new-gr-c-s-check-loaded="14.1070.0" data-gr-ext-installed="">
+    <input id="ApplicantId" name="ApplicantId" type="hidden" value="10031082">
+    <input id="PaymentAmount" name="PaymentAmount" type="hidden" value="1000">
+    <input id="ApplicantAddress" name="ApplicantAddress" type="hidden" value="A 415 ITHUM TOWER">
+    <input id="ApplicantCity" name="ApplicantCity" type="hidden" value="">
+    <input id="ApplicantEmailId" name="ApplicantEmailId" type="hidden" value="shyamsharma.nd@gmail.com">
+    <input id="ApplicantName" name="ApplicantName" type="hidden" value="Shyam">
+    <input id="ApplicantMobileNo" name="ApplicantMobileNo" type="hidden" value="7982283486">
+    <input id="ApplicantFatherName" name="ApplicantFatherName" type="hidden" value="FATHER NAME">
+    <input id="ApplicantMotherName" name="ApplicantMotherName" type="hidden" value="MotherName">
+    <input id="ClientId" name="ClientId" type="hidden" value="1">
+    <input id="ResposneURL" name="ResposneURL" type="hidden" value="http://edufee.in/ExpressPaymentResponse">
+    <input id="TransactionId" name="TransactionId" type="hidden" value="EF1003108225070847">
+    <input id="CurrecyCode" name="CurrecyCode" type="hidden" value="INR">
+    <input id="ClientName" name="ClientName" type="hidden" value="ND INFO SYSTEMS PVT. LTD.">
+    <input id="ActualPayment" name="ActualPayment" type="hidden" value="MTAwMA==">
+    <input id="CustomValue" name="CustomValue" type="hidden" value="">
+
+
+    
+
+
+
+
+    <div id="pay_cont">
+        <header class="pay_header">
+            <div class="pay_logo"><a href="http://secure.edufee.in/PaymentProcess#"><img src="./ND Payment Gateway_files/logo-white.png" alt=""></a></div>
+            <p><span>  [ INDIAN RED CROSS SOCIETY. ]</span></p>
+        </header>
+
+        <div class="pay_method">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h3>General Information</h3>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="gen_info">
+                                    <h5>Customer Detail</h5>
+                                    <a href="http://secure.edufee.in/PaymentProcess#"><i class="far fa-edit"></i></a>
+                                    <p class="mb-2">
+                                        <b>Applicant Name</b>
+                                        <span>Shyam</span>
+                                    </p>
+                                    <p class="mb-2">
+                                        <b>Mobile No</b>
+                                        <span>7982283486</span>
+                                    </p>
+                                    <p>
+                                        <b>Email Id</b>
+                                        <span>shyamsharma.nd@gmail.com</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="gen_info">
+                                    <h5>Address</h5>
+                                    <a href="http://secure.edufee.in/PaymentProcess#"><i class="far fa-edit"></i></a>
+                                    <p> A 415 ITHUM TOWER <br></p>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="mt-4">Select Payment Gateway Options</h5>
+                        <div class="error-msg" id="error" style="display: none;"></div>
+                        <div class="">
+                            <span id="errorRadio"></span>
+                            <span id="selectRadio"></span>
+                        </div>
+                        <ul class="pay_opt">
+                            <li>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="optradio" value="CREDIT CARD" id="rbCC" onclick="CalculateFee(this.id)" class="custom-control-input">
+                                    <label class="custom-control-label" for="rbCC">Credit Card</label>
+                                    <p class="m-0">
+                                        <small class="display-block">
+                                            (Convenience Fee <label id="lblCCTC">2.56 %</label>)
+                                        </small>
+                                    </p>
+                                </div>
+                                <img class="visa_logo" src="./ND Payment Gateway_files/visa_logo.png" alt="">
+                            </li>
+                            <li>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="optradio" value="DEBIT CARD" id="rbDC" onclick="CalculateFee(this.id)" class="custom-control-input">
+                                    <label class="custom-control-label" for="rbDC">Debit Card</label>
+                                    <p class="m-0">
+                                        <small class="display-block">
+                                            (Convenience Fee <label id="lblDCTC">2.56 %</label>)
+                                        </small>
+                                    </p>
+                                </div>
+                                <img class="visa_logo" src="./ND Payment Gateway_files/visa_logo.png" alt="">
+                            </li>
+                            <li>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="optradio" value="NET BANKING" id="rbNB" onclick="CalculateFee(this.id)" class="custom-control-input">
+                                    <label class="custom-control-label" for="rbNB">Net Banking</label>
+                                    <p class="m-0">
+                                        <small class="display-block">
+                                            (Convenience Fee <label id="lblNBTC">10</label>)
+                                        </small>
+                                    </p>
+                                </div>
+                                <img class="visa_logo" src="./ND Payment Gateway_files/nat_bank.png" alt="">
+                            </li>
+                            <li class="hide">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="optradio" value="CASH DEPOSITE" id="rbCD" onclick="CalculateFee(this.id)" class="custom-control-input">
+                                    <label class="custom-control-label" for="rbCD">Cash Deposit</label>
+                                    <p class="m-0">
+                                        <small class="display-block">(Convenience Fee  <i class="fa fa-rupee"></i> 50 , at HDFC Branches only) </small>
+                                    </p>
+                                </div>
+                                <img class="visa_logo" src="./ND Payment Gateway_files/nat_bank.png" alt="">
+                            </li>
+                        </ul>
+
+                        <ul class="pay_opt">
+
+                        </ul>
+                        <p class="form-style text-white">
+                            <label class="">
+                                <input type="checkbox" id="chkAccPayment"><i></i> I have read and accepted Payment <a class="cur_pointer" data-toggle="modal" data-target="#terms-condition"><b><u>Terms &amp; Conditions</u></b></a>
+                            </label>
+                            <span id="termCon"></span>
+                        </p>
+
+                        <span id="termCon"></span>
+                        <a href="../../Corporates/InvoiceAndPaymentReceipt.html" class="btn btn-primary">Payment Now</a>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="your_order">
+                            <h3>Payment Detail</h3>
+                            <table class="shop_table" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2" class="product-name">Total Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="cart_item">
+                                        <td class="product-name">Subtotal</td>
+                                        <td class="product-total"><i class="fas fa-rupee-sign ml-2 mr-1 f13"></i><span id="spnAmount">1000</span></td>
+                                    </tr>
+                                    <tr class="cart_item">
+                                        <td class="product-name">Convenience Fee </td>
+                                        <td class="product-total"><i class="fas fa-rupee-sign ml-2 mr-1 f13"></i><span id="spnBankCharges">0</span></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="order-total">
+                                        <td class="product-name"><span>Total Payable</span></td>
+                                        <td class="product-total"><i class="fas fa-rupee-sign ml-2 mr-1 f16"></i><span class="TotalAmount" id="pTotalAmount"> 1000 /</span></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

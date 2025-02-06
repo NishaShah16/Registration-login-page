@@ -1,0 +1,286 @@
+﻿@model NDProject.Models.Login
+@{
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>H.N.B. UTTARAKHAND MEDICAL EDUCATION UNVERSITY</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/assets/img/favicon.ico" rel="icon">
+    <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="~/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="~/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="~/assets/css/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+
+
+
+    <script src="~/assets/js/jquery-3.4.1.min.js"></script>
+    <script src="~/assets/js/Login.js"></script>
+</head>
+
+<body>
+    @*@if (ViewBag.Error != null)
+    {
+        <p style="color:red;">@ViewBag.Error</p>
+    }*@
+    <div class="homeHeader hideOnPrint">
+        <div class="container">
+            <a href="#"><img src="~/assets/images/logo.png" width="450" alt=""></a>
+            <div class="homeHeadHelp">
+                <div class="mb-1 w-100 d-flex align-items-center"><i class="ri-phone-fill"></i>9876543210</div>
+                <div class="mb-1 w-100 d-flex align-items-center"><i class="ri-mail-fill"></i>example@gmail.com</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="mainWrap loginCouncelling hideOnPrint">
+        <div class="login-wrap">
+            <div class="loginCont">
+                <div class="leftSide">
+                    <div>
+                        <h3 style="font-size:22px; color:#000;">Login</h3>
+                        <p>Welcome to the H.N.B. Portal</p>
+                        <img src="~/assets/images/logoCircle.png" width="120px">
+                    </div>
+                </div>
+                <div id="app-login" class="rightSide">
+                    <form method="post">
+                        <a href="~/UserDetails/Create" class="btn1 greenBG w-100 text-center">Candidate, Register Here</a>
+                        @*<a href="Create.html" class="btn1 greenBG w-100 text-center">Candidate, Register Here</a>*@
+                        <p class="f16 mt-3 mb-4 text-center"><strong style="font-weight:600;">Or</strong> Login</p>
+
+                        @*<div class="row mb-3">
+            <label for="inputText" class="col-sm-4 col-form-label">MobileNumber</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="MobileNumber">
+            </div>
+        </div>*@
+                        @if (ViewBag.Error != null)
+                        {
+                            <p style="color:red;">@ViewBag.Error</p>
+                        }
+                        <div class="row mb-3">
+                            <label for="inputEmail" class="col-sm-4 col-form-label">Email</label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" name="Email" placeholder="Email">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" id="inputPassword" name="Password" placeholder="Password">
+                            </div>
+                        </div>
+                        <button type="submit" Action= "/Index/DashBoard" class="text-center mt-5 btn1 w-100">Login</button>
+                        @*<div class="text-center mt-5"><a action="@Url.Action("DashBoard", "DashBoard")" class="btn1 w-100">Sign in</a></div>*@
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="copyright hideOnPrint">
+        <div class="container">
+            <div class="footLink">
+                <ul>
+                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#privacyPolicyModal">Privacy Policy</a></li>
+                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#refundPolicyModal">Refund Policy</a></li>
+                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#TermsAndConditionModal">Terms & Condition</a></li>
+                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#ContactUsModal">Contact Us</a></li>
+                </ul>
+            </div>
+            <p class="mb-0">Copyright © H.N.B. Uttarakhand Medical Education University, Dehradun</p>
+        </div>
+    </section>
+
+
+
+
+    <!-- Privacy Policy Modal -->
+    <div class="modal fade" id="privacyPolicyModal" tabindex="-1" aria-labelledby="privacyPolicyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width:1200px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacyPolicyModalLabel">Privacy Policy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5><strong>What we Collect</strong></h5>
+                    <p><strong>We may collect the following information:</strong></p>
+                    <p>1- Name, contact information (including email address)</p>
+                    <p>2 Demographic information such as city</p>
+                    <p><strong>What we do with the information we gather</strong></p>
+                    <p>We require this information to understand your needs and provide you with a<br>better service, and in particular for the following reasons:</p>
+                    <p>1- Internal record keeping.</p>
+                    <p>2- Market research</p>
+                    <p>From time to time, we may also use your information to contact you for above purposes. We may contact you by email, phone, fax or mail. We may use the information to update and customize the website according to your interests.</p>
+                    <h5><strong>Our Security Commitment</strong></h5>
+                    <p>We are committed to ensuring that your information is secure. In order to<br>prevent unauthorized access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online. We will not sell, distribute or lease your personal information to third parties without your permission or as required by law to do so.</p>
+                </div>
+                <div class="modal-footer hideOnPrint">
+                    <a href="#" class="btn1">Print</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Refund Policy Modal -->
+    <div class="modal fade" id="refundPolicyModal" tabindex="-1" aria-labelledby="refundPolicyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width:1200px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="refundPolicyModalLabel">Refund Policy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>The user/client is suppose to make payment for any service rendered only after the user/client is fully satisfied with the service. Therefore no refund is issued after the user/client’s satisfactory acknowledgement.</p>
+                </div>
+                <div class="modal-footer hideOnPrint">
+                    <a href="#" class="btn1">Print</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Terms & Condition Modal -->
+    <div class="modal fade" id="TermsAndConditionModal" tabindex="-1" aria-labelledby="TermsAndConditionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width:1200px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="TermsAndConditionModalLabel">Terms & Condition</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome to <a href="https://hnbumu.co.in">https://hnbumu.co.in</a>! These terms and conditions outline the rules and regulations for the use of University Of Lucknow’s Website, located at <a href="https://hnbumu.co.in">https://hnbumu.co.in</a>. By accessing this website we assume you accept these terms and conditions. Do not continue to use <a href="https://hnbumu.co.in">https://hnbumu.co.in</a> if you do not agree to take all of the terms and conditions stated on this page. Our Terms and Conditions were created with the help of the Terms and Conditions Generator and the Free Terms &amp; Conditions Generator. The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: “Client”, “You” and “Your” refers to you, the person log on this website and compliant to the Company’s terms and conditions. “The Company”, “Ourselves”, “We”, “Our” and “Us”, refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p>
+                    <p>Cookies:</p>
+                    <p>We employ the use of cookies. By accessing <a href="https://hnbumu.co.in">https://hnbumu.co.in</a>, you agreed to use cookies in agreement with the University Of Lucknow’s Privacy Policy. Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>
+                    <p>License</p>
+                    <p>Unless otherwise stated, University Of Lucknow and/or its licensors own the intellectual property rights for all material on <a href="https://hnbumu.co.in">https://hnbumu.co.in</a>. All intellectual property rights are reserved. You may access this from <a href="https://hnbumu.co.in">https://hnbumu.co.in</a> for your own personal use subjected to restrictions set in these terms and conditions. You must not:<br><br></p>
+                    <ul><li>Republish material from <a href="https://hnbumu.co.in">https://hnbumu.co.in</a></li><li>Sell, rent or sub-license material from <a href="https://hnbumu.co.in">https://hnbumu.co.in</a></li><li>Reproduce, duplicate or copy material from <a href="https://hnbumu.co.in">https://hnbumu.co.in</a></li><li>Redistribute content from <a href="https://hnbumu.co.in">https://hnbumu.co.in</a></li><li>This Agreement shall begin on the date hereof.</li></ul>
+                    <p>Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. University Of Lucknow does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of University Of Lucknow,its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, University Of Lucknow shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website. University Of Lucknow reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions. You warrant and represent that:<br><br></p>
+                    <ul><li>You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;</li><li>The Comments do not invade any intellectual property right, including without limitation copyright, patent or trademark of any third party;</li><li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material which is an invasion of privacy</li><li>The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.</li></ul>
+                    <p>You hereby grant University Of Lucknow a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>
+                    <p>Hyperlinking to our Content:</p>
+                    <p>The following organizations may link to our Website without prior written approval:<br><br></p>
+                    <ul><li>Government agencies;</li><li>Search engines;</li><li>News organizations;</li><li>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses; and</li><li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.</li></ul>
+                    <p>These organizations may link to our home page, to publications or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party’s site. We may consider and approve other link requests from the following types of organizations:<br><br></p>
+                    <ul><li>commonly-known consumer and/or business information sources;</li><li>dot.com community sites;</li><li>associations or other groups representing charities;</li><li>online directory distributors;</li><li>internet portals;</li><li>accounting, law and consulting firms; and</li><li>educational institutions and trade associations.</li></ul>
+                    <p>We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of University Of Lucknow; and (d) the link is in the context of general resource information. These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party’s site. If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to University Of Lucknow. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response. Approved organizations may hyperlink to our Website as follows:<br><br></p>
+                    <ul><li>By use of our corporate name; or</li><li>By use of the uniform resource locator being linked to; or</li><li>By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party’s site.</li></ul>
+                    <p>No use of University Of Lucknow’s logo or other artwork will be allowed for linking absent a trademark license agreement.</p>
+                    <p>iFrames:</p>
+                    <p>Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website.</p>
+                    <p>Content Liability:</p>
+                    <p>We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p>
+                    <p>Your Privacy:</p>
+                    <p>Please read Privacy Policy.</p>
+                    <p>Reservation of Rights:</p>
+                    <p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it’s linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p>
+                    <p>Removal of links from our website:</p>
+                    <p>If you find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly. We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.</p>
+                    <p>Disclaimer:</p>
+                    <p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:<br><br><br></p>
+                    <ul><li>limit or exclude our or your liability for death or personal injury;</li><li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li><li>limit any of our or your liabilities in any way that is not permitted under applicable law; or</li><li>exclude any of our or your liabilities that may not be excluded under applicable law.</li></ul>
+                    <p><br>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty. As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
+                </div>
+                <div class="modal-footer hideOnPrint">
+                    <a href="#" class="btn1">Print</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contact Us Modal -->
+    <div class="modal fade" id="ContactUsModal" tabindex="-1" aria-labelledby="ContactUsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width:1200px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ContactUsModalLabel">Contact Us</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>H.N.B. Uttarakhand Medical Education University, Dehradun</strong></p>
+                    <p><strong>Address:</strong> New Central Hop Town, Bhayakhala, Seshambara(Selaqui), Dehradun Pin 248197 Uttarakhand, India</p>
+                    <p><strong>Phone:</strong> (+91) XXXXXXXXXX | (+91) XXXXXXXXXX | Fax: (+91) XXXXXXXXXX</p>
+                    <div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13772.68420088258!2d77.8575624!3d30.3460883!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc578b2e737d6db5a!2sHemwati%20Nandan%20Bahuguna%20Uttarakhand%20Medical%20Education%20University%20(HNBUMU)%2C%20Dehradun!5e0!3m2!1sen!2sin!4v1664273704163!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer hideOnPrint">
+                    <a href="#" class="btn1">Print</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="~/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/assets/vendor/quill/quill.min.js"></script>
+    <script src="~/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="~/assets/vendor/chart.js/chart.min.js"></script>
+    <script src="~/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="~/assets/vendor/echarts/echarts.min.js"></script>
+    <script src="~/assets/js/sweetalert2.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/assets/js/main.js"></script>
+
+
+    @*<script>
+            $(document).ready(function () {
+                $(".loginByOtpLink").click(function () {
+                    $(".loginByOtp").show();
+                    $(".loginByPassword").hide();
+                    $(this).hide();
+                    $(".loginByPasswordLink").show();
+                });
+
+                $(".loginByPasswordLink").click(function () {
+                    $(".loginByOtp").hide();
+                    $(".loginByPassword").show();
+                    $(this).hide();
+                    $(".loginByOtpLink").show();
+                });
+            });
+
+        </script>*@
+
+
+
+</body>
+
+</html>
+

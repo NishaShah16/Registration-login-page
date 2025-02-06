@@ -1,0 +1,132 @@
+﻿$(document).ready(function () {
+    $("#btnPayNow").click(function () {
+        SaveRecord();      
+    });
+
+    $("#spnBankCharges").text('0');
+    GetTransactionCharges();
+});
+
+function GetTransactionCharges() {
+    $.post(webAppPath + "/PaymentProcess/GetTransactionCharges?clientId=" + $("#ClientId").val() + "&paymentAmount=" + $("#PaymentAmount").val(), function (result) {
+        if (result[0].ChargesInPercentage != 0) {
+            $("#lblCCTC").text(result[0].ChargesInPercentage + ' %');
+        }
+        else {
+
+            $("#lblCCTC").text(result[0].ChargesFix);
+        }
+        if (result[1].ChargesInPercentage != 0) {
+            $("#lblDCTC").text(result[1].ChargesInPercentage + ' %');
+        }
+        else {
+            $("#lblDCTC").text(result[1].ChargesFix);
+        }
+        if (result[2].ChargesInPercentage != 0) {
+            $("#lblNBTC").text(result[2].ChargesInPercentage + ' %');
+        }
+        else {
+            $("#lblNBTC").text(result[2].ChargesFix);
+        }
+
+    });
+}
+
+
+function CalculateFee(id) {
+    var bankCharges = 0;
+    var paymentAmount = 0;
+    if (id == "rbCC") {
+        if ($("#lblCCTC").text().substring($("#lblCCTC").text().length - 1) == '%') {
+            bankCharges = (parseFloat($("#PaymentAmount").val()) * parseFloat($("#lblCCTC").text().replace('%', '').trim())) / 100;
+        }
+        else {
+            bankCharges = parseFloat($("#lblCCTC").text().trim());
+        }
+    }
+    else if (id == "rbDC") {
+        if ($("#lblDCTC").text().substring($("#lblDCTC").text().length - 1) == '%') {
+            bankCharges = (parseFloat($("#PaymentAmount").val()) * parseFloat($("#lblDCTC").text().replace('%', '').trim())) / 100;
+        }
+        else {
+            bankCharges = parseFloat($("#lblDCTC").text().trim());
+        }
+    }
+    else if (id == "rbNB") {
+        if ($("#lblNBTC").text().substring($("#lblNBTC").text().length - 1) == '%') {
+            bankCharges = (parseFloat($("#PaymentAmount").val()) * parseFloat($("#lblNBTC").text().replace('%', '').trim())) / 100;
+        }
+        else {
+            bankCharges = parseFloat($("#lblNBTC").text().trim());
+        }
+    }
+    else if (id == "rbMK") {
+        if ($("#lblMKTC").text().substring($("#lblMKTC").text().length - 1) == '%') {
+            bankCharges = (parseFloat($("#PaymentAmount").val()) * parseFloat($("#lblMKTC").text().replace('%', '').trim())) / 100;
+        }
+        else {
+            bankCharges = parseFloat($("#lblMKTC").text().trim());
+        }
+    }
+    else {
+        bankCharges = parseFloat('50') * 1;
+    }
+    bankCharges = bankCharges.toFixed(2);
+    $("#spnBankCharges").text(bankCharges);
+    paymentAmount = parseFloat($("#PaymentAmount").val());
+    var totalAmount = (parseFloat($("#PaymentAmount").val()) + parseFloat(bankCharges));
+    $("#pTotalAmount").text(totalAmount);
+}
+
+
+function SaveRecord() {
+    var isChecked = $("input[name=optradio]:checked").val();
+    if (!isChecked) {
+        //jAlert("Please Select Payment Mode");
+        $.alert("Please Select Payment Mode", "Information!");
+
+        return false;
+    }
+
+    if (!$('#chkAccPayment').is(':checked')) {
+        //jAlert("Please check Terms and condition");
+        $.alert("Please check Terms and condition", "Information!");
+        return false;
+    }
+
+
+    $.confirm({
+        icon: 'fa fa-warning',
+        title: 'Confirmation !',
+        content: 'Your are going to proceed on payment page for transaction amount of Rs ' + $("#pTotalAmount").text() + '/- by ' + isChecked + ' </br> In case of non-receival of the payment receipt, kindly wait for12 hours, for transaction failure/duplicate payments/refunds etc. kindly reach us on <b>+91-9810285068, +91-9717894424</b> or write us at – <b>info@edufee.in</b> </br></br> Do you want to proceed with this Transaction ?',
+        type: 'orange',
+        animation: 'zoom',
+        buttons: {
+            tryAgain: {
+                text: 'Yes',
+                btnClass: 'btn-green',
+                action: function () {
+                    $.post(webAppPath + "/PaymentProcess/Pay?paymentAmount=" + $("#pTotalAmount").text() + "&paymentMode=" + isChecked + "&applicantId=" + $("#ApplicantId").val() + "&bankCharges=" + $("#spnBankCharges").text() + "&applicantAddress=" + $("#ApplicantAddress").val() + "&applicantCity=" + $("#ApplicantCity").val() + "&applicantEmailId=" + $("#ApplicantEmailId").val() + "&applicantName=" + $("#ApplicantName").val() + "&applicantMobileNo=" + $("#ApplicantMobileNo").val() + "&applicantFatherName=" + $("#ApplicantFatherName").val() + "&applicantMotherName=" + $("#ApplicantMotherName").val() + "&clientId=" + $("#ClientId").val() + "&responseURL=" + $("#ResposneURL").val() + "&actualPayment=" + $("#ActualPayment").val() + "&transactionId=" + $("#TransactionId").val() + "&customValue=" + $("#CustomValue").val(), function (result) {
+                        if (result && result != "error" && result != "closed" && result != 'Cash Deposit is not Available for your Region.') {
+                            if (result.length > 0) {
+                                $(result).appendTo('body').submit().remove();
+                            }
+                            else {
+                                $.alert(result);
+                            }
+                        }
+                        else {
+                            $.alert(result);
+                        }
+                    });
+
+                }
+            },
+            close: function () {
+               
+            }
+        }
+    });
+
+
+}
